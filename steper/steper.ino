@@ -14,6 +14,9 @@ const int defferenc = 40;
 void setPosition (double pos [6]);
 void moveToPositionVector (double pos [6]); 
 void stepLeft ();
+void dance1(int pa);
+void dance2(int pa);
+void hello ();
 
 void setup()
 {
@@ -31,16 +34,11 @@ void setup()
 
 //================================================================================
 void loop(){
-   double position [6] = {30, 30, 30, 30, 30, 30};
-   
-   for (int i = 1; i<7; i++) {
-      moveToPositionVector (position);
-      delay (100);
 
-      moveToPositionVector (nullPosition);
-      delay (100);
-   }
-
+   dance1(1);
+   dance2(3);
+   hello();
+   delay (1000);
    for (int i = 1; i<10; i++) {
       stepLeft();
    }  
@@ -143,6 +141,62 @@ void stepLeft () {
     position [5] = -20;
     position [2] = 20;
     moveToPositionVector (position);
-    delay(1000);  
+    //delay(1000);  
 }
 //------------------------------------------------------------------------
+
+void dance1(int pa){
+   double position1 [6] = {30, 30, 0, -30, -30, 0};
+   double position2 [6] = {-30, -30, 0, 30, 30, 0};
+   for (int i = 0; i<pa; i++) {
+      moveToPositionVector (position1);
+      delay (100);
+      
+   moveToPositionVector (nullPosition);
+   delay (100);
+      moveToPositionVector (position2);
+      
+      delay (100);
+   }
+   moveToPositionVector (nullPosition);
+}
+
+void dance2 (int pa){
+   double position [6] = {30, 30, 30, 30, 30, 30};
+   for (int i = 1; i<pa; i++) {
+      moveToPositionVector (position);
+      delay (100);
+
+      moveToPositionVector (nullPosition);
+      delay (100);
+   }
+}
+
+void hello () {
+    double position [6] = {0, 0, 20, 30, 30, -20};
+    moveToPositionVector (position);
+    position [0] = 90;
+    position [1] = 30;
+    moveToPositionVector (position);
+    delay(1000);
+    position [1] = 0;
+    moveToPositionVector (position);
+    delay(1000);
+    position [1] = -30;
+    moveToPositionVector (position);
+    for (int i = 0; i<4; i++) {
+      position [2] = 30;
+      moveToPositionVector (position);
+      position [2] = -30;
+      moveToPositionVector (position);
+    }
+    position [2] = 20;
+    moveToPositionVector (position);
+    position [0] = 90;
+    position [1] = 30;
+    moveToPositionVector (position);
+    double position1 [6] = {0, 0, 20, 30, 30, -20};
+    moveToPositionVector (position1);
+    moveToPositionVector (nullPosition);
+      
+}
